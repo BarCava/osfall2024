@@ -1,0 +1,39 @@
+fn check_guess(guess: i32, secret: i32) -> i32 {
+    if guess == secret {
+        0 
+    } else if guess > secret {
+        1
+    } else {
+        -1 
+    }
+}
+
+fn main() {
+    let secret: i32 = 42;
+    let mut attempts: i32 = 0;
+
+    loop {
+        let guesses = [5, 90, 42]; 
+
+       
+        for &num in &guesses {
+            attempts += 1; 
+
+            let result = check_guess(num, secret);
+
+            
+            if result == 0 {
+                println!("Correct! The secret number is {}.", secret);
+                break; 
+            } else if result == 1 {
+                println!("Too high! Try again.");
+            } else {
+                println!("Too low! Try again.");
+            }
+        }
+
+        break; 
+    }
+
+    println!("You guessed the number in {} attempts.", attempts);
+}
