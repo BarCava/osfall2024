@@ -1,0 +1,31 @@
+fn most_frequent_word(text: &str) -> (String, usize) {
+    let mut max_word = String::new();
+    let mut max_count = 0;
+
+    let words = text.split_whitespace();
+    
+    for word in words.clone() {
+        let mut count = 0;
+
+        
+        for other_word in words.clone() {
+            if word == other_word {
+                count += 1;
+            }
+        }
+
+    
+        if count > max_count {
+            max_word = word.to_string();
+            max_count = count;
+        }
+    }
+
+    (max_word, max_count) // return tuple
+}
+
+fn main() {
+    let text = "the quick brown fox jumps over the lazy dog the quick brown fox";
+    let (word, count) = most_frequent_word(text);
+    println!("Most frequent word: \"{}\" ({} times)", word, count);
+}
